@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+
+	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+		<resetJUL>true</resetJUL>
+	</contextListener>
+
+	<property name="USER_HOME" value="C:\\log" />
+
+		<!-- To enable JMX Management -->
+		<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+			<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+				<level>INFO</level>
+			</filter>
+			<encoder>
+				<pattern>%d{dd MMM yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{0}	%M- %msg%n</pattern>
+				<!--<pattern>%d{date} [%thread] %-5level %logger{0}	-%M- %msg%n</pattern>-->
+			</encoder>
+		</appender>
+	
+	
+<!-- 	<appender name="FILE" class="ch.qos.logback.core.FileAppender"> -->
+		<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">	
+		<file>${USER_HOME}/logApp.log</file>
+		<encoder>
+			<pattern>%d{dd MMM yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{0}	%M- %msg%n</pattern>
+			<!--<pattern>%d{date} [%thread] %-5level %logger{0}	-%M- %msg%n</pattern>-->
+		</encoder>
+		
+		<rollingPolicy  class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<FileNamePattern>${USER_HOME}/logApp%d{HH:mm:ss}-%i.log.zip</FileNamePattern>
+			<MinIndex>1</MinIndex>
+			<MaxIndex>5</MaxIndex>
+		</rollingPolicy> 
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>1MB</MaxFileSize>
+		</triggeringPolicy>
+	</appender>
+
+
+	
+
+	<!--http://www.mchange.com/projects/c3p0/index.html#configuring_logging -->
+	<property name="com.mchange.v2.log.MLog" value="com.mchange.v2.log.log4j.Log4jMLog" />
+	<property name="com.mchange.v2.log.NameTransformer" value="com.mchange.v2.log.PackageNames" />
+	<property name="com.mchange.v2.log.FallbackMLog.DEFAULT_CUTOFF_LEVEL"	value="INFO" />
+
+	<logger name="com.mchange.v2.c3p0" level="DEBUG">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+	</logger>
+		<logger name="com.mchange.v2.log.MLog" level="DEBUG">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+	<logger name="javax.enterprise" level="WARN">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+	</logger>
+	<logger name="org.springframework" level="DEBUG">
+		<appender-ref ref="FILE" />
+	</logger>
+	<logger name="org.apache" level="ERROR">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+	<logger name="org.hibernate" level="INFO">
+		 <appender-ref ref="CONSOLE"/>
+		 <appender-ref ref="FILE" />
+	</logger>
+
+
+
+	<root level="DEBUG">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+	</root>
+</configuration>
