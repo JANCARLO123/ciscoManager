@@ -21,11 +21,11 @@ public class Date {
     @JsonProperty("year")
     private String year;
 
-
-
-    @JsonProperty("monthname")
+    @JsonProperty("monthname_short")
     private String monthname;
 
+    @JsonProperty("weekday")
+    private String weekday;
 
     public String getPretty() {
         return pretty;
@@ -35,11 +35,11 @@ public class Date {
         this.pretty = pretty;
     }
 
-    public String getDate() {
+    public String getDay() {
         return day;
     }
 
-    public void setDate(String day) {
+    public void setDay(String day) {
         this.day = day;
     }
 
@@ -51,14 +51,6 @@ public class Date {
         this.month = month;
     }
 
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
-
     public String getMonthname() {
         return monthname;
     }
@@ -67,14 +59,31 @@ public class Date {
         this.monthname = monthname;
     }
 
+    public String getWeekday() {
+        return weekday;
+    }
+
+    public void setWeekday(String weekday) {
+        this.weekday = weekday;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
     @Override
     public String toString() {
         return "Date{" +
                 "pretty='" + pretty + '\'' +
-                ", date='" + day + '\'' +
+                ", day='" + day + '\'' +
                 ", month='" + month + '\'' +
                 ", year='" + year + '\'' +
                 ", monthname='" + monthname + '\'' +
+                ", weekday='" + weekday + '\'' +
                 '}';
     }
 }

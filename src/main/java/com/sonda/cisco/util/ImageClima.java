@@ -1,12 +1,17 @@
 package com.sonda.cisco.util;
 
 
+import com.sonda.cisco.model.ForecastModel;
+import com.sonda.cisco.model.clima.Forecast;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.net.URL;
+import java.util.*;
+import java.util.List;
 
 /**
  * Created by JanCarlo on 18/05/2016.
@@ -154,7 +159,7 @@ public class ImageClima {
 
 
 
-	public byte[] getDataImageBytePronostico(int alto, int ancho ){
+	public byte[] getDataImageBytePronostico(int alto, int ancho, List<ForecastModel> forecastModels ){
 
 		ByteArrayOutputStream bas = new ByteArrayOutputStream();
 		BufferedImage fondo = new BufferedImage(ancho, alto, BufferedImage.TYPE_INT_ARGB);
@@ -164,14 +169,14 @@ public class ImageClima {
 
 		try {
 
-			ImageIcon imagen = new ImageIcon(this.getClass().getResource("/iconWater/clear.gif"));
-			ImageIcon imagen2 = new ImageIcon(this.getClass().getResource("/iconWater/cloudy.gif"));
-			ImageIcon imagen3 = new ImageIcon(this.getClass().getResource("/iconWater/fog.gif"));
-			ImageIcon imagen4 = new ImageIcon(this.getClass().getResource("/iconWater/hazy.gif"));
+			ImageIcon imagen = new ImageIcon(this.getClass().getResource("/iconWater/"+forecastModels.get(0).getIcon() +".gif"));
+			ImageIcon imagen2 = new ImageIcon(this.getClass().getResource("/iconWater/"+forecastModels.get(1).getIcon() +".gif"));
+			ImageIcon imagen3 = new ImageIcon(this.getClass().getResource("/iconWater/"+forecastModels.get(2).getIcon() +".gif"));
+			ImageIcon imagen4 = new ImageIcon(this.getClass().getResource("/iconWater/"+forecastModels.get(3).getIcon() +".gif"));
 
 
 			//URL url = new URL("http://icons.wxug.com/i/c/k/"+img+".gif");
-			//ImageIcon imagen = new ImageIcon(ImageIO.read(url));
+			//ImageIcon imagen = new ImageIcon(ImageIO.read(url));.
 
 			ImageIcon imagenFondo = new ImageIcon(this.getClass().getResource("/iconWater/fondo.jpg"));
 
@@ -191,17 +196,17 @@ public class ImageClima {
 			g.drawString("Pronostico", 250, 15);
 			//g.setColor(new Color(66, 90, 131, 220));
 			//g.setFont(new Font(Font.DIALOG, Font.BOLD, 170));
-			g.drawString("Lunes", 50, 30);
-			g.drawString("Martes", 370, 30);
-			g.drawString("Miercoles", 50, 180);
-			g.drawString("Jueves", 370, 180);
+			g.drawString(forecastModels.get(0).getDay(), 50, 30);
+			g.drawString(forecastModels.get(1).getDay(), 370, 30);
+			g.drawString(forecastModels.get(2).getDay(), 50, 180);
+			g.drawString(forecastModels.get(3).getDay(), 370, 180);
 
 			g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 15));
 			g.setColor(Color.WHITE);
-			g.drawString("19-Jun-2016", 45, 130);
-			g.drawString("20-Jun-2016", 355, 130);
-			g.drawString("21-Jun-2016", 45, 275);
-			g.drawString("22-Jun-2016", 355, 275);
+			g.drawString(forecastModels.get(0).getDate(), 45, 130);
+			g.drawString(forecastModels.get(1).getDate(), 355, 130);
+			g.drawString(forecastModels.get(2).getDate(), 45, 275);
+			g.drawString(forecastModels.get(3).getDate(), 355, 275);
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 70));
 //			g.drawString("°C", 230, 130);
 			g.drawImage(imagen.getImage(), 50, 35, 70, 70, null);
@@ -230,10 +235,10 @@ public class ImageClima {
 
 			g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 45));
 
-			g.drawString("20", 220, 55);
-			g.drawString("23", 520, 55);
-			g.drawString("24", 220, 200);
-			g.drawString("25", 520, 200);
+			g.drawString(forecastModels.get(0).getMaxC(), 220, 55);
+			g.drawString(forecastModels.get(1).getMaxC(), 520, 55);
+			g.drawString(forecastModels.get(2).getMaxC(), 220, 200);
+			g.drawString(forecastModels.get(3).getMaxC(), 520, 200);
 
 			// min
 			g.setColor(new Color(19, 206, 255, 200));
@@ -255,13 +260,10 @@ public class ImageClima {
 
 			g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 45));
 
-			g.drawString("18", 220, 115);
-			g.drawString("20", 520, 115);
-			g.drawString("19", 220, 260);
-			g.drawString("16", 520, 260);
-
-
-
+			g.drawString(forecastModels.get(0).getMinC(), 220, 115);
+			g.drawString(forecastModels.get(1).getMinC(), 520, 115);
+			g.drawString(forecastModels.get(2).getMinC(), 220, 260);
+			g.drawString(forecastModels.get(3).getMinC(), 520, 260);
 
 
 			ImageIO.write(fondo, "PNG", bas);
@@ -277,7 +279,7 @@ public class ImageClima {
 
 
 
-	public byte[] getDataImageByteTipoCambio(int alto, int ancho){
+	public byte[] getDataImageByteTipoCambio(int alto, int ancho, String dolar, String  euro){
 		ByteArrayOutputStream bas = new ByteArrayOutputStream();
 		BufferedImage fondo = new BufferedImage(ancho, alto, BufferedImage.TYPE_INT_ARGB);
 		Graphics g = fondo.getGraphics();
@@ -285,7 +287,8 @@ public class ImageClima {
 
 		try {
 
-			//ImageIcon imagen = new ImageIcon(this.getClass().getResource("/iconWater/" +img+".gif"));
+			ImageIcon imgdolar = new ImageIcon(this.getClass().getResource("/iconWater/dolar.jpg"));
+			ImageIcon imgEuro = new ImageIcon(this.getClass().getResource("/iconWater/euro.png"));
 
 
 			//ImageIcon imagen = new ImageIcon(ImageIO.read(url));
@@ -293,22 +296,19 @@ public class ImageClima {
 			ImageIcon imagenFondo = new ImageIcon(this.getClass().getResource("/iconWater/fondo.jpg"));
 
 
-
-
-			g.setColor(new Color(0, 174, 239, 127));
-			g.fillRect(0, 0, ancho, alto);
-			g.drawImage(imagenFondo.getImage(), 0, 0, ancho, alto,null);
-			g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 40));
+     	    g.drawImage(imagenFondo.getImage(), 0, 0, ancho, alto,null);
+			g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 25));
 			g.setColor(Color.WHITE);
-			g.drawString("Ciudad de México", 130, 35);
-			//g.setColor(new Color(66, 90, 131, 220));
-			g.setFont(new Font(Font.DIALOG, Font.BOLD, 170));
-//			g.drawString(tempString, 50, 185);
-			g.setFont(new Font(Font.DIALOG, Font.BOLD, 70));
-			g.drawString("°C", 230, 130);
-//			g.drawImage(imagen.getImage(), 420, 45, 100, 100, null);
+			g.drawString("Tipo de Cambio", 200, 25);
+			g.drawImage(imgdolar.getImage(), 70, 70, 170, 100, null);
+			g.drawImage(imgEuro.getImage(), 390, 70, 170, 100, null);
 
-			g.setFont(new Font(Font.MONOSPACED, Font.BOLD, 35));
+			g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 35));
+			g.drawString("Dolar", 95, 60);
+			g.drawString("Euro", 415, 60);
+
+			g.drawString("$ "+ dolar, 80, 250);
+			g.drawString("$ "+ euro, 400, 250);
 //			g.drawString(descrpcion, 50, 260);
 
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 20));

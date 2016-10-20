@@ -23,6 +23,14 @@ public class High {
         this.fahrenheit = fahrenheit;
     }
 
+    public String getCelsius() {
+        return celsius;
+    }
+
+    public void setCelsius(String celsius) {
+        this.celsius = celsius;
+    }
+
     @Override
     public String toString() {
         return "High{" +

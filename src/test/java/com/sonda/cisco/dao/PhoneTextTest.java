@@ -22,6 +22,15 @@ public class PhoneTextTest {
 
     @Test
          public void testSave() throws DaoException {
+        TblPhoneText tblPhoneText =new TblPhoneText();
+        tblPhoneText.setTitle("Mision");
+        tblPhoneText.setText("Hola como estas");
+        tblPhoneText.setTiempo_refresh(20);
+        tblPhoneText.setUrl_refresh("http://192.168.220.250:8080/service/text/clima/1");
+        PhoneTextDao.save(tblPhoneText);
+
+
+
 
 
     }

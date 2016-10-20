@@ -18,12 +18,14 @@ public class Forecastday {
     @JsonProperty("period")
     private String period;
 
+    @JsonProperty("conditions")
+    private String conditions;
+
     @JsonProperty("high")
     private High high;
 
     @JsonProperty("low")
     private Low low;
-
 
     public Date getDate() {
         return date;
@@ -33,6 +35,45 @@ public class Forecastday {
         this.date = date;
     }
 
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public String getPeriod() {
+        return period;
+    }
+
+    public void setPeriod(String period) {
+        this.period = period;
+    }
+
+    public String getConditions() {
+        return conditions;
+    }
+
+    public void setConditions(String conditions) {
+        this.conditions = conditions;
+    }
+
+    public High getHigh() {
+        return high;
+    }
+
+    public void setHigh(High high) {
+        this.high = high;
+    }
+
+    public Low getLow() {
+        return low;
+    }
+
+    public void setLow(Low low) {
+        this.low = low;
+    }
 
     @Override
     public String toString() {
@@ -40,6 +81,7 @@ public class Forecastday {
                 "date=" + date +
                 ", icon='" + icon + '\'' +
                 ", period='" + period + '\'' +
+                ", conditions='" + conditions + '\'' +
                 ", high=" + high +
                 ", low=" + low +
                 '}';

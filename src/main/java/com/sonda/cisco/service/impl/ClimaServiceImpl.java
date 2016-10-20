@@ -45,23 +45,11 @@ public class ClimaServiceImpl implements ClimaService {
 
         RestTemplate restTemplate = new RestTemplate();
         Wunderground clima = restTemplate.getForObject(URL,
-                Wunderground.class, apiKey, pais, ciudad);
-
-        System.out.println(clima.toString());
-        return clima;
+        Wunderground.class, apiKey, pais, ciudad);
+       return clima;
     }
 
 
-    @Override
-    public WundergroundForest getWundergroundForest(String pais, String ciudad) {
-
-        RestTemplate restTemplate = new RestTemplate();
-        WundergroundForest clima = restTemplate.getForObject(URLForest,
-                WundergroundForest.class, apiKey, pais, ciudad);
-
-        System.out.println(clima.toString());
-        return clima;
-    }
 
     public Clima getClima(Long ciudad) throws DaoException{
 

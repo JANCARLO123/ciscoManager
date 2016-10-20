@@ -24,7 +24,7 @@ public class Forecast {
 
     @Override
     public String toString() {
-        return "Forecast{" +
+        return "ForecastModel{" +
                 "simpleforecast=" + simpleforecast +
                 '}';
     }

@@ -12,7 +12,6 @@ import com.sonda.cisco.model.clima.WundergroundForest;
 public interface ClimaService {
 
     public Wunderground getWunderground(String pais,String ciudad);
-    public WundergroundForest getWundergroundForest(String pais,String ciudad);
     public Clima getClima(Long ciudad)throws DaoException;
 
 

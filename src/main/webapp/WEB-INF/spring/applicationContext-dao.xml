@@ -17,6 +17,7 @@
         <property name="annotatedClasses">
             <list>
                 <value>com.sonda.cisco.model.Clima</value>
+                <value>com.sonda.cisco.model.ForecastModel</value>
                 <value>com.sonda.cisco.model.TblPhoneText</value>
                 <value>com.sonda.cisco.model.TblKeyItem</value>
                 <value>com.sonda.cisco.model.TblPhoneImage</value>
@@ -65,6 +66,15 @@
         <property name="genericDao">
             <bean class="com.sonda.cisco.dao.generic.impl.GenericDaoImpl">
                 <constructor-arg value="com.sonda.cisco.model.Clima"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="forecastModelDao" class="com.sonda.cisco.dao.generic.impl.GenericDynaSearchDaoImpl">
+        <constructor-arg value="com.sonda.cisco.model.ForecastModel"/>
+        <property name="genericDao">
+            <bean class="com.sonda.cisco.dao.generic.impl.GenericDaoImpl">
+                <constructor-arg value="com.sonda.cisco.model.ForecastModel"/>
             </bean>
         </property>
     </bean>

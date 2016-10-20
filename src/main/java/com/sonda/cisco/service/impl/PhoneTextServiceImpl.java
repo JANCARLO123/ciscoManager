@@ -17,10 +17,8 @@ public class PhoneTextServiceImpl implements PhoneTextService {
     @Autowired
     private GenericDynaSearchDao<TblPhoneText, Long> PhoneTextDao;
 
-
-
-
-        public TblPhoneText getPhoneService(Long id) throws DaoException{
+        @Override
+       public TblPhoneText getPhoneService(Long id) throws DaoException{
         TblPhoneText tablePhoneText = new TblPhoneText();
         tablePhoneText= PhoneTextDao.get(id);
         return tablePhoneText;

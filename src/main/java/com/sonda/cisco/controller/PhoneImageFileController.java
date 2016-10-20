@@ -50,6 +50,7 @@ public class PhoneImageFileController {
         phoneImageFile.setLocationY(tblPhoneImageFile.getLocationY());
         phoneImageFile.setLocationX(tblPhoneImageFile.getLocationX());
         phoneImageFile.setUrl(tblPhoneImageFile.getUrl().getUrl());
+        phoneImageFile.setPrompt(tblPhoneImageFile.getPrompt());
         if(tblPhoneImageFile.getWindowMode()!=null) {
             phoneImageFile.setWindowMode(tblPhoneImageFile.getWindowMode());
         }

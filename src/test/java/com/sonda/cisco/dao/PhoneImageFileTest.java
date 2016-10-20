@@ -47,9 +47,10 @@ public class PhoneImageFileTest {
 
         TblPhoneImageFile tblPhoneImageFile =new TblPhoneImageFile();
         tblPhoneImageFile.setTitle("Sonda Mexico");
+        tblPhoneImageFile.setWindowMode("Wide");
         tblPhoneImageFile.setLocationX(-1);
         tblPhoneImageFile.setLocationY(-1);
-        tblPhoneImageFile.setTiempo_refresh(20);
+        tblPhoneImageFile.setTiempo_refresh(10);
         tblPhoneImageFile.setUrl_refresh("http://192.168.220.250:8080/service/xml/imagen/2");
         tblPhoneImageFile.setUrl(imagenUrl);
         tblPhoneImageFile.setKeyItems(tblKeyItems);
@@ -87,7 +88,7 @@ public class PhoneImageFileTest {
         tblPhoneImageFile.setTitle("Sonda Mexico");
         tblPhoneImageFile.setLocationX(-1);
         tblPhoneImageFile.setLocationY(-1);
-        tblPhoneImageFile.setTiempo_refresh(20);
+        tblPhoneImageFile.setTiempo_refresh(5);
         tblPhoneImageFile.setUrl_refresh("http://192.168.220.250:8080/service/xml/imagen/3");
         tblPhoneImageFile.setUrl(imagenUrl);
         tblPhoneImageFile.setKeyItems(tblKeyItems);
@@ -122,7 +123,7 @@ public class PhoneImageFileTest {
         tblPhoneImageFile.setTitle("Sonda Mexico");
         tblPhoneImageFile.setLocationX(-1);
         tblPhoneImageFile.setLocationY(-1);
-        tblPhoneImageFile.setTiempo_refresh(20);
+        tblPhoneImageFile.setTiempo_refresh(5);
         tblPhoneImageFile.setUrl_refresh("http://192.168.220.250:8080/service/xml/imagen/4");
         tblPhoneImageFile.setUrl(imagenUrl);
         tblPhoneImageFile.setKeyItems(tblKeyItems);
@@ -147,8 +148,8 @@ public class PhoneImageFileTest {
 
 
         TblKeyItem tblKeyItem2= new TblKeyItem();
-        tblKeyItem2 .setName("Mas");
-        tblKeyItem2.setUrl("http://192.168.220.250:8080/service/xml/imagen/3");
+        tblKeyItem2 .setName("Pronostico");
+        tblKeyItem2.setUrl("http://192.168.220.250:8080/service/xml/imagen/5");
         tblKeyItem2.setPosition(3);
 
         tblKeyItems.add(tblKeyItem);
@@ -157,6 +158,80 @@ public class PhoneImageFileTest {
 
         TblPhoneImageFile tblPhoneImageFile =new TblPhoneImageFile();
         tblPhoneImageFile.setTitle("Clima");
+        tblPhoneImageFile.setLocationX(-1);
+        tblPhoneImageFile.setLocationY(-1);
+        tblPhoneImageFile.setTiempo_refresh(20);
+        tblPhoneImageFile.setUrl_refresh("http://192.168.220.250:8080/service/xml/imagen/6");
+        tblPhoneImageFile.setUrl(imagenUrl);
+        tblPhoneImageFile.setKeyItems(tblKeyItems);
+        PhoneImageFileDao.save(tblPhoneImageFile);
+
+
+
+    }
+
+
+    @Test
+    public void testSave5() throws DaoException {
+
+
+        ImagenUrl imagenUrl = new ImagenUrl();
+        imagenUrl.setUrl("http://192.168.220.250:8080/service/img/1/pronostico.png");
+
+        ArrayList<TblKeyItem> tblKeyItems = new ArrayList<TblKeyItem>();
+        TblKeyItem tblKeyItem= new TblKeyItem();
+        tblKeyItem .setName("Salir");
+        tblKeyItem.setUrl("SoftKey:Exit");
+        tblKeyItem.setPosition(1);
+
+        TblKeyItem tblKeyItem2= new TblKeyItem();
+        tblKeyItem2 .setName("Regresar");
+        tblKeyItem2.setUrl("http://192.168.220.250:8080/service/xml/imagen/4");
+        tblKeyItem2.setPosition(3);
+
+        tblKeyItems.add(tblKeyItem);
+        tblKeyItems.add(tblKeyItem2);
+
+
+
+        TblPhoneImageFile tblPhoneImageFile =new TblPhoneImageFile();
+        tblPhoneImageFile.setTitle("Pronostico");
+        tblPhoneImageFile.setLocationX(-1);
+        tblPhoneImageFile.setLocationY(-1);
+        tblPhoneImageFile.setTiempo_refresh(20);
+        tblPhoneImageFile.setUrl_refresh("http://192.168.220.250:8080/service/xml/imagen/4");
+        tblPhoneImageFile.setUrl(imagenUrl);
+        tblPhoneImageFile.setKeyItems(tblKeyItems);
+        PhoneImageFileDao.save(tblPhoneImageFile);
+
+
+
+    }
+
+    @Test
+    public void testSave6() throws DaoException {
+
+
+        ImagenUrl imagenUrl = new ImagenUrl();
+        imagenUrl.setUrl("http://192.168.220.250:8080/service/img/tipocambio.png");
+
+        ArrayList<TblKeyItem> tblKeyItems = new ArrayList<TblKeyItem>();
+        TblKeyItem tblKeyItem= new TblKeyItem();
+        tblKeyItem .setName("Salir");
+        tblKeyItem.setUrl("SoftKey:Exit");
+        tblKeyItem.setPosition(1);
+
+//        TblKeyItem tblKeyItem2= new TblKeyItem();
+//        tblKeyItem2 .setName("Regresar");
+//        tblKeyItem2.setUrl("http://192.168.220.250:8080/service/xml/imagen/4");
+//        tblKeyItem2.setPosition(3);
+
+        tblKeyItems.add(tblKeyItem);
+//        tblKeyItems.add(tblKeyItem2);
+
+
+        TblPhoneImageFile tblPhoneImageFile =new TblPhoneImageFile();
+        tblPhoneImageFile.setTitle("Tipo de Cambio");
         tblPhoneImageFile.setLocationX(-1);
         tblPhoneImageFile.setLocationY(-1);
         tblPhoneImageFile.setTiempo_refresh(20);
